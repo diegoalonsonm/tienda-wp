@@ -1,0 +1,34 @@
+body {
+    background-color: bisque;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: rgb(80, 38, 155);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+
+aside {
+    background-color: aqua;
+    color: white;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    bottom: 20px;
+    width: 20%;
+}
+
+section {
+    position: fixed;
+    top: 100px;
+    left: 20%;
+    bottom: 20px;
+    width: 80%;
+    padding: 10px
+}
