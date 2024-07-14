@@ -14,12 +14,16 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
     private Long idProducto;
-    private Long idCategoria;
+    // private Long idCategoria; // no es necesario porque se trae la informacion de la categoria con el anotacion @ManyToOne
     private String descripcion;
     private String detalle;
     private double precio;
     private int existencias;
     private String rutaImagen;
-    private boolean activo;       
+    private boolean activo;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private Categoria categoria;
     
 }

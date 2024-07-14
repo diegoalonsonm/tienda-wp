@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Tech Shop</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <!-- 1 Sección para mostrar los tabs de las categorias-->
+        <section th:fragment="tabsCategorias" class="bg-light">
+            <div class="row p-4">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Todas</a>
+                    </li>
+                    <li class="nav-item" th:each="c : ${categorias}">
+                        <a class="nav-link" href="#">[[${c.descripcion}]]</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2 Sección para mostrar las tarjetas de productos-->
+        <section th:fragment="listado" class="bg-light">
+            <div class="row row-cols-4">
+                <div class="card" th:each="p : ${productos}">
+                    <figure>
+                        <img th:src="@{${p.rutaImagen}}" class="card-img-top" alt="[[${p.descripcion}]]" height="200"/>
+                        <figcaption>
+                            ¢ [[${p.precio}]] ([[${p.existencias}]])
+                        </figcaption>
+                    </figure>
+                    <div class="card-header">
+                        <h4>[[${p.descripcion}]]</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>[[${p.detalle}]]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

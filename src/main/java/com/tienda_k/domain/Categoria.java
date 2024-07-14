@@ -3,6 +3,8 @@ package com.tienda_k.domain;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "categoria")
@@ -16,6 +18,10 @@ public class Categoria {
     private Long idCategoria;
     private String descripcion;
     private String rutaImagen;
-    private boolean activo;       
+    private boolean activo;
+
+    @OneToMany
+    @JoinColumn(name = "id_categoria", updatable = false)
+    private List<Producto> productos;
     
 }
