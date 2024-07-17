@@ -8,7 +8,8 @@
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}" />        
-            <section th:replace="~{pruebas/fragmentos :: listado}"/>
+        <section th:replace="~{pruebas/fragmentos :: filtros}"/>
+        <section th:replace="~{pruebas/fragmentos :: listado}"/>
         <footer th:replace="~{layout/plantilla :: footer}" />
     </body>
 </html>
