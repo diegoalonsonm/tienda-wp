@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6"
       xmlns:th="http://thymeleaf.org">
     <head th:fragment="head">
         <title>Tech Shop</title>
@@ -21,10 +22,10 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav" sec:authorize="hasRole('ROLE_VENDEDOR')">
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a></li>
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>                           
-                             <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
                                 <a class="nav-link dropdown-toggle" 
                                    data-bs-toggle="dropdown" 
                                    href="#" 
@@ -44,6 +45,26 @@
                                     <li><a class="dropdown-item" th:href="@{/(lang=es)}">ES</a></li>
                                     <li><a class="dropdown-item" th:href="@{/(lang=en)}">EN</a></li>
                                 </ul>
+                            </li>
+                        </ul>
+                        <ul class="navbar nav" sec:authorize="!isAuthenticated()">
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link text-white " th:href="@{/login}">
+                                    <i class="fas fa-right-to-bracket"></i>
+                                </a>
+                            </li>    
+                        </ul>
+                        <ul class="navbar nav" sec:authorize="isAuthenticated()">
+                            <li class="nav-item px-2 text-white">                                
+                                <img th:src="@{${session.usuarioImagen}}" class="rounded-circle" alt="imagen" width="40"/>
+                                <span sec:authentication='name'>name</span>
+                            </li>
+                            <li class='nav-item my-auto'>
+                                <form method='POST' th:action='@{/logout}'>
+                                    <button class='btn btn-dark'>
+                                        <i class='fas fa-right-from-bracket'></i>
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </div>
