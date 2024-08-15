@@ -49,4 +49,10 @@ public class ProductoServiceImpl implements ProductoService {
         return productoDao.findByPrecioBetweenOrderByDescripcion(precioInferior, precioSuperior);
     }
 
+    @Override
+    @Transactional
+    public List<Producto> consulta2(int cantidad) {
+        return productoDao.findByExistencias(cantidad);
+    }
+
 }

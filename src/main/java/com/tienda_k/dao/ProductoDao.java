@@ -7,5 +7,7 @@ import java.util.List;
 public interface ProductoDao extends JpaRepository<Producto, Long> {
 
     public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInferior, double precioSuperior);
+
+    public List<Producto> findByExistencias(int existencias);
     
 }

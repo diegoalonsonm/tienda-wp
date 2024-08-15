@@ -7,8 +7,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <header th:replace="~{layout/plantilla :: header}" />        
-        <section th:replace="~{pruebas/fragmentos :: filtros}"/>
+        <header th:replace="~{layout/plantilla :: header}" />
+        <div class="row row-cols-2">
+            <section th:replace="~{pruebas/fragmentos :: filtros}"/>
+            <section th:replace="~{pruebas/fragmentos :: filtros2}"/>
+        </div>
+        </div>
         <section th:replace="~{pruebas/fragmentos :: listado}"/>
         <footer th:replace="~{layout/plantilla :: footer}" />
     </body>

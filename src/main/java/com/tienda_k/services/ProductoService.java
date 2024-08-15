@@ -15,4 +15,6 @@ public interface ProductoService {
     
     public List<Producto> consulta1(double precioInferior, double precioSuperior);
 
+    public List<Producto> consulta2(int cantidad);
+
 }

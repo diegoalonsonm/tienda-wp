@@ -64,4 +64,13 @@ public class PruebasController {
         return "/pruebas/listado2";
     }
 
+    @PostMapping("/consulta2")
+    public String consulta2(@RequestParam(value="stockMinimo") int cantidad,Model model) {
+        var productos = productoService.consulta2(cantidad);
+        model.addAttribute("cantidad", cantidad);
+        model.addAttribute("productos", productos);
+
+        return "/pruebas/listado2";
+    }
+
 }

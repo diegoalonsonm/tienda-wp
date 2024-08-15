@@ -41,26 +41,26 @@
             </div>
         </section>
         
-        <!-- 1 Sección para filtrar los productos -->
+        <!-- 1 Sección para filtrar los productos por precio -->
         <section th:fragment="filtros">
             <div class="row row-cols-4 m-4">
-                <div class="card">
+                <div class="card w-100">
                     <form method="POST" th:action="@{/pruebas/consulta1}">
                         <div class="card-header">
-                            <h4>[[#{pruebas.ampliadas}]]</h4>
+                            <h4>Consultar por precio</h4>
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
                                 <label for="precioInferior">
                                     [[#{pruebas.precio.inferior}]]
                                 </label>
-                                <input type="number" class="form-control" th:value="${precioInferior}" th:name="precioInferior" required="true" />
+                                <input type="number" class="form-control" th:value="${precioInferior}" th:name="precioInferior" required="true" min="0" />
                             </div>
                             <div class="mb-3">
                                 <label for="precioSuperior">
                                     [[#{pruebas.precio.superior}]]
                                 </label>
-                                <input type="number" class="form-control" th:value="${precioSuperior}" th:name="precioSuperior" required="true" />
+                                <input type="number" class="form-control" th:value="${precioSuperior}" th:name="precioSuperior" required="true" min="0" />
                             </div>
                         </div>
                         <div class="card-footer text-center">
@@ -69,7 +69,33 @@
                             </button>
                         </div>
                     </form>
-                </div>                
+                </div>
+            </div>
+        </section>
+
+        <!-- 1 Sección para filtrar los productos por cantidad -->
+        <section th:fragment="filtros2">
+            <div class="row row-cols-4 m-4">
+                <div class="card w-100">
+                    <form method="POST" th:action="@{/pruebas/consulta2}">
+                        <div class="card-header">
+                            <h4>Consultar por cantidad</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="stockMinimo">
+                                    Cantidad en stock
+                                </label>
+                                <input type="number" class="form-control" th:value="${stockMinimo}" th:name="stockMinimo" required="true" min="1" />
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-primary" >
+                                <i class="fas fa-check"></i> [[#{pruebas.ampliadas}]]
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
     </body>
