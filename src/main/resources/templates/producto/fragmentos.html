@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6"
       xmlns:th="http://thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
         <title>Tech Shop</title>
@@ -12,7 +13,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">   
-                        <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#agregarProducto">
+                        <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#agregarProducto">
                             <i class="fas fa-plus"></i> [[#{producto.agregar}]]
                         </button>
                     </div>
@@ -93,7 +94,7 @@
                                             <th>[[#{producto.total}]]</th>
                                             <th>[[#{producto.activo}]]</th>
                                             <th>[[#{producto.categoria}]]</th>
-                                            <th></th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -105,7 +106,7 @@
                                             <td style="text-align: end">[[${producto.precio * producto.existencias}]]</td>
                                             <td th:text="${producto.activo} ? 'Activa' : 'Inactiva'" />
                                             <td>[[${producto.categoria.descripcion}]]</td>
-                                            <td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
                                                 <a th:href="@{/producto/eliminar/}+${producto.idProducto}" class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                                                 </a>
