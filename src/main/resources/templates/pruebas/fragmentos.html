@@ -3,9 +3,7 @@
       xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6"
       xmlns:th="http://thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>Tech Shop</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="../../static/js/rutinas.js"></script>
     </head>
     <body>
         <!-- 1 Sección para mostrar los tabs de las categorias-->
@@ -36,7 +34,7 @@
                                 <form>
                                     <input type="hidden" name="texto" th:value="${p.idProducto}"/>
                                     <input type="hidden" name="texto" th:value="${p.existencias}"/>
-                                    <button class="btn btn-light" id="addCart" name="addCart" onclick="addCart(this.form)" type="button">
+                                    <button class="btn btn-light" id="addCar" name="addCar" onclick="addCart(this.form)" type="button">
                                         <i class="fas fa-cart-plus"></i>
                                     </button>
                                 </form>

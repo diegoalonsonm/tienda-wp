@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6"
+      xmlns:th="http://thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Tech Shop</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}" />        
+        <section>
+            <h1 class="text-center mt-5 text-primary">[[#{payment.ok}]]</h1>
+            <p class="text-center mt-3">[[#{payment.ok.text}]]</p>
+            <div class="d-flex justify-content-center mt-5">
+                <a th:href="@{/}" class="btn btn-primary">
+                    <i class="fas fa-home"></i> [[#{accion.regresar}]]
+                </a>
+            </div>
+        </section>
+        <footer th:replace="~{layout/plantilla :: footer}" />
+    </body>
+</html>
